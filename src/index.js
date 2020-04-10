@@ -1,7 +1,8 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const expressGraphQL = require("express-graphql");
-const { buildSchema } = require("graphql");
+import express from "express";
+import bodyParser from "body-parser";
+import expressGraphQL from "express-graphql";
+import mongoose from "mongoose";
+import { buildSchema } from "graphql";
 
 const app = express();
 
@@ -16,5 +17,9 @@ app.use(
     pretty: true,
   })
 );
+
+mongoose.connect("mongodb://localhost:27017/graphql", {
+  useNewUrlParser: true,
+});
 
 app.listen(3000, () => console.log("Express has been started"));
