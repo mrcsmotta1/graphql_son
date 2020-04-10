@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const expressGraphQL = require("express-graphql");
+const { buildSchema } = require("graphql");
 
 const app = express();
 
@@ -9,7 +10,8 @@ app.use(bodyParser.json());
 app.use(
   "/graphql",
   expressGraphQL({
-    schema: ``,
+    schema: buildSchema(`type Query { msg: String }`),
+    rootValue: { msg: () => "Hello World" },
     graphiql: true,
     pretty: true,
   })
