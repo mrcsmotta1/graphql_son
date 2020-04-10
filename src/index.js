@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import expressGraphQL from "express-graphql";
 import mongoose from "mongoose";
 import { buildSchema } from "graphql";
+import routes from "./routes/index";
 
 const app = express();
 
@@ -21,5 +22,5 @@ app.use(
 mongoose.connect("mongodb://localhost:27017/graphql", {
   useNewUrlParser: true,
 });
-
+routes(app);
 app.listen(3000, () => console.log("Express has been started"));
