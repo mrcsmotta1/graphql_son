@@ -21,7 +21,7 @@ app.use(
   })
 );
 
-mongoose.connect("mongodb://localhost:27017/graphql", {
+mongoose.connect("mongodb://localhost:27017/graphqlson", {
   useNewUrlParser: true,
 });
 routes(app);
