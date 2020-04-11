@@ -4,6 +4,7 @@ import expressGraphQL from "express-graphql";
 import mongoose from "mongoose";
 import { buildSchema } from "graphql";
 import routes from "./routes/index";
+import Schema from "./graphql/index";
 
 const app = express();
 
@@ -12,8 +13,9 @@ app.use(bodyParser.json());
 app.use(
   "/graphql",
   expressGraphQL({
-    schema: buildSchema(`type Query { msg: String }`),
-    rootValue: { msg: () => "Hello World" },
+    schema: Schema,
+    // schema: buildSchema(`type Query { msg: String }`),
+    // rootValue: { msg: () => "Hello World" },
     graphiql: true,
     pretty: true,
   })
